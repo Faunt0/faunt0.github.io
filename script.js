@@ -8,6 +8,9 @@ window.onload = function() {
 	input1el.addEventListener("input", change);
 	input2el.addEventListener("input", change);
 	gweiin.addEventListener("input", calcgas);
+	document.getElementById("select1").value = "eth";
+	document.getElementById("select2").value = "eur";
+	// switchinputs();
 
 	fetch('https://api.cryptonator.com/api/ticker/eth-eur').then(response =>{
     	return response.json();

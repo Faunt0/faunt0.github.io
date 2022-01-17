@@ -90,13 +90,26 @@ input {
 .links {
 	grid-row: 2/3;
 	grid-column: 1/2;
+	align-self: center;
 }
 
-.gas {
-
+.bottom {
 	grid-row: 3/4;
 	grid-column: 2/3;
 
+	display: grid;
+	grid-template-columns: 50% 50%;
+	align-items: center;
+}
+.gas {
+	grid-column: 1/2;
+
 	justify-self: center;
-	align-self: center;
+	/* align-self: center; */
+}
+.gas input {
+	width: 100px;
+}
+.total {
+	justify-self: center;
 }
