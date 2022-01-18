@@ -1,5 +1,5 @@
 
-var price, eth, eur, gaseth, gaseur;
+var price, previousprice, eth, eur, gaseth, gaseur;
 window.onload = function() {
 	const input1el = document.getElementById("firstin");
 	const input2el = document.getElementById("secondin");
@@ -24,11 +24,10 @@ window.onload = function() {
 		price = data.ticker.price;
 		eur = price;
 		input1el['placeholder'] = eth;
-		input2el['placeholder'] = price.toFixed(2);
+		input2el['placeholder'] = price;
 
 
 		calcgas();
-		total();
 	})
 }
 
@@ -38,27 +37,31 @@ function ethupdate() {
 	}).then(data =>{
 		price = data.ticker.price;
 
-		// console.log(price);
+		console.log(price);
 
 		calcgas();
 		change();
+		// 
 	})
 }
 setInterval(ethupdate, 30000);
 
-function change (e) {
+//meant for updating the price calculation
+function change () {
 	console.log("were changing");
 
-	if (e.target == document.getElementById("firstin")) {
-		eur = (e.target.value * price).toFixed(2);
+	if (price != previousprice) {
+		previousprice = price;
+	}
+	else if (document.getElementById("firstin").value != eth) {
+		eth = document.getElementById("firstin").value
+		eur = (eth * price).toFixed(2);
 		document.getElementById('secondin').value = eur;
-
 	}
 	else {
-		eth = e.target.value / price;
+		eth = eur / price;
 		document.getElementById('firstin').value = eur;
 	}
-
 	total();
 }
 
@@ -67,11 +70,13 @@ function calcgas() {
 
     var gwei = Number(document.getElementById('gwei').value);
 	var gas = (gwei * 200000 / (10**9));
+
 	gaseur = (gas * price).toFixed(2);
 	gaseth = gas;
 
 	document.getElementById("gasprice").innerHTML = "&euro; " + gaseur;
-	document.getElementById("gaspriceETH").innerHTML = "Ξ " + gas;
+	document.getElementById("gaspriceETH").innerHTML = "Ξ " + gaseth;
+	total();
 }
 
 function switchinputs() {
@@ -85,8 +90,8 @@ function switchinputs() {
 }
 
 function total() {
-	
+	console.log("calcing tottaaalall")
 	document.getElementById("totaleur").innerHTML = "&euro; " + (Number(eur) + Number(gaseur)).toFixed(2);
 	document.getElementById("totaleth").innerHTML = "Ξ " + (Number(gaseth) + Number(eth));
-	
+	console.log(gaseth + eth)
 }
