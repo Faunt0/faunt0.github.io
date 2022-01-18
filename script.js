@@ -24,7 +24,7 @@ window.onload = function() {
 		price = data.ticker.price;
 		eur = price;
 		input1el['placeholder'] = eth;
-		input2el['placeholder'] = price;
+		input2el['placeholder'] = price.toFixed(2);
 
 
 		calcgas();

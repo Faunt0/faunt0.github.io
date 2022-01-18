@@ -12,7 +12,7 @@ html {
 	font-family: 'Oswald', Arial, sans-serif;
 }
 body {
-	overflow: hidden;
+	/* overflow: hidden; */
 	display: grid;
 	grid-template-columns: 300px 1fr 300px;
 	grid-template-rows: 200px 1fr 200px;
