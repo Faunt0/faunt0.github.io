@@ -10,40 +10,29 @@
 html {
 	margin: auto;
 	font-family: 'Oswald', Arial, sans-serif;
-    background-color: var(--bg-color);
-	/* background-color: rgb(54, 41, 41); */
-	/* background-color: #2d132c;
-	background-image: linear-gradient(-45deg, #2d132c, #e48257);*/
-	/* background-image: linear-gradient(180deg, lightskyblue, royalblue); */
 }
 body {
-	/* width: 100%; */
 	overflow: hidden;
 	display: grid;
 	grid-template-columns: 300px 1fr 300px;
 	grid-template-rows: 200px 1fr 200px;
-    /* background-color: aliceblue; */
 	background-color: yellow;
 }
 input {
-	/* padding: 0.7em; */
-	/* border-radius: 5px; */
-	/* background-color: aliceblue; */
-	/* border: none; */
-	/* border: 1px solid var(--accent-color); */
-	/* color: var(--text-color); */
 	background-color: yellow;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
 }
 
 .convert {
 	grid-row: 2/3;
-	/* align-self: center;
-	justify-content: center; */
-	/* align-items: center; */
 	display: grid;
-	/* grid-template-columns: ; */
-	/* grid-template-rows: 200px 1fr; */
-	/* grid-template-columns: 200px 200px 200px; */
 	grid-template-rows: 1fr 200px 1fr;
 }
 .convert div {
@@ -55,11 +44,9 @@ input {
 }
 .convert div:first-child {
 	grid-row: 1/2;
-	/* grid-column: 1/4; */
 }
 .convert div:last-child {
 	grid-row: 3/4;
-	/* grid-column: 1/4; */
 }
 .convert button {
 	grid-row: 2/3;
@@ -78,8 +65,6 @@ input {
 }
 .convert div select {
 	border: none;
-	/* border-bottom: 1px black solid; */
-	/* font-size: 100px; */
 
 	grid-column: 2/3;
 	grid-row: 2/3;
@@ -100,17 +85,27 @@ input {
 
 	display: grid;
 	grid-template-columns: 50% 50%;
-	align-items: center;
+	align-content: center;
+	justify-items: center;
 }
 .gas {
 	grid-column: 1/2;
 
+	/* justify-content: center;
+	align-content: center; */
 	justify-self: center;
-	/* align-self: center; */
+
+	/* border-right: 5px solid black; */
+	/* width: 100%; */
 }
 .gas input {
 	width: 100px;
+	list-style-type: none;
 }
+
 .total {
-	justify-self: center;
+	/* justify-items: center; */
+	/* text-align: center; */
+	/* width: 100%; */
+	/* border-left: 5px solid black; */
 }
