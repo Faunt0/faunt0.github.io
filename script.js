@@ -41,26 +41,25 @@ function ethupdate() {
 
 		calcgas();
 		change();
-		// 
 	})
 }
-setInterval(ethupdate, 30000);
+setInterval(ethupdate, 5000);
 
 //meant for updating the price calculation
 function change () {
 	console.log("were changing");
-
-	if (price != previousprice) {
-		previousprice = price;
-	}
-	else if (document.getElementById("firstin").value != eth) {
+	
+	if (document.getElementById("firstin").value != eth) {
 		eth = document.getElementById("firstin").value
 		eur = (eth * price).toFixed(2);
 		document.getElementById('secondin').value = eur;
 	}
-	else {
+	else if (document.getElementById("secondin").value != eur) {
 		eth = eur / price;
-		document.getElementById('firstin').value = eur;
+		document.getElementById('firstin').value = eth;
+	}
+	else {
+		previousprice = price;
 	}
 	total();
 }
@@ -80,18 +79,18 @@ function calcgas() {
 }
 
 function switchinputs() {
-	var input2 = document.getElementById("secondin").value;
-	document.getElementById("secondin").value = document.getElementById("firstin").value;
-	document.getElementById("firstin").value = input2;
+	// var input2 = document.getElementById("secondin").value;
+	// document.getElementById("secondin").value = document.getElementById("firstin").value;
+	// document.getElementById("firstin").value = input2;
 
-	var select1 = document.getElementById("select1").value
-	document.getElementById("select1").value = document.getElementById("select2").value;
-	document.getElementById("select2").value = select1;
+	// var select1 = document.getElementById("select1").value
+	// document.getElementById("select1").value = document.getElementById("select2").value;
+	// document.getElementById("select2").value = select1;
 }
 
 function total() {
 	console.log("calcing tottaaalall")
 	document.getElementById("totaleur").innerHTML = "&euro; " + (Number(eur) + Number(gaseur)).toFixed(2);
 	document.getElementById("totaleth").innerHTML = "Ξ " + (Number(gaseth) + Number(eth));
-	console.log(gaseth + eth)
+	// console.log(gaseth + eth)
 }
